@@ -1,0 +1,156 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+body {
+    font-size:62.5%;
+}
+
+.container {
+    max-width: 88rem;
+    margin: 3rem auto 0 auto;
+    color:white;
+    box-shadow: 0 .4rem .8rem 0 rgba(0, 0, 0, 0.2), 0 .6rem 2rem 0 rgba(0, 0, 0, 0.19);
+}
+
+.header {
+    min-height: 8rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#C2D5D9;
+    border-bottom: 1.5px solid #b3ac92;
+}
+
+.search {
+    width:50%;
+    display:flex;
+    justify-content:center;
+}
+
+.search__input {
+    outline-offset:0;
+    outline:none;
+    padding: 1rem 5rem;
+}
+
+.button {
+    margin-left:1rem;
+    padding: .5rem 2.5rem;
+    background-color: #FAF7F8;
+    font-size:1.6rem;
+    color:#4E4E4E;
+}
+
+.button:focus {
+    border:1px solid grey;
+}
+
+.recipe {
+    width:100%;
+    display:flex;    
+}
+
+.recipe__list {
+    width:20%;
+    background-color:#C2D5D9;
+    color:black;
+    list-style:none;
+}
+
+.recipe__link {
+    font-size:1.6rem;
+}
+
+.recipe__list-item {
+ width:80%;
+ background-color: white;
+ margin:.5rem auto;
+ padding:.5rem;
+}
+
+/*TODO REMOVE MIN HEIGHT*/
+.recipe__detail {
+    flex: 1 1 80%;
+    min-height:50rem;
+    background-color: #FAF7F8;
+    color:#4E4E4E;
+}
+
+.recipe__header {
+    width:80%;
+    margin: 2rem auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border: 2px solid #4E4E4E;
+}
+
+.recipe__image{
+  height:16rem;
+  width:16rem;
+  border-radius:50%;
+  margin:1.5rem 0 1rem 0;
+  object-fit: cover;
+}
+
+.recipe__title {
+ display:inline-block;
+ font-size: 5rem;
+ margin-left:2rem;
+ color:#4E4E4E;
+}
+
+.columns {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+}
+
+.heading {
+    font-size: 3rem;
+    margin-bottom:1rem;
+}
+
+.recipe__ingredient-info  {
+    border: 2px solid #4E4E4E;
+    border-radius:5px;
+    margin-bottom: 1rem;
+    margin-left: .5rem;
+    padding:1.5rem;
+    font-size:1.6rem;   
+}
+
+.recipe__ingredients {
+    list-style:none;
+}
+
+.recipe__info {
+    border: 2px solid #4E4E4E;
+    border-radius:5px;
+    margin-left: .5rem;
+    padding:1.5rem;
+    font-size:1.6rem;
+}
+
+.recipe__procedure {
+ padding:0 .5rem;
+ flex: 0 1 65%;
+ margin-bottom:2rem;
+}
+
+.recipe__procedure-num {
+    font-size: 2.5rem;
+    margin-right:.75rem;
+    font-weight:600;
+}
+
+.recipe__procedure-text {
+    font-size:1.6rem;
+    padding: .75rem;
+}
+
+.recipe__procedure-step {
+    display:flex;     
+}
