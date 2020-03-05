@@ -1,5 +1,5 @@
 const searchInput = document.querySelector('.search__input');
-const recipeList = document.querySelector('.recipe__list')
+export const recipeList = document.querySelector('.recipe__list')
 const recipeDetail = document.querySelector('.recipe__detail')
 export const searchButton = document.querySelector('.search__button')
 
@@ -31,21 +31,17 @@ export const renderNotification = (type) => {
 const renderRecipeList = (recipe) => {
   if(recipe && recipeList) {
     let listItem = `
-      <li class="recipe__list-item">
+      <li id=${recipe.idMeal} class="recipe__list-item">
         <a class="recipe__link">${recipe.strMeal}</a>
       </li>`
       
     recipeList.insertAdjacentHTML('beforeend',listItem)
   }
-  
 }
 
 export const populateRecipeList = (recipes) => {
-  console.log('recipes', recipes)
-
   if (recipes && recipes.length > 0) {
     recipes.forEach(recipe => {
-      console.log('inside for each', recipe)
       renderRecipeList(recipe)
     })
   } else {

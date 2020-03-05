@@ -1,6 +1,12 @@
 import Search from './models/search'
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
+import Recipe from './models/recipe';
 export const state = {}
+
+const selectMealById = (state,id) => {
+    return state.search.result.meals.find(item => item.idMeal === id)
+}
 
 export const searchController = async () => {
     searchView.clearNotification()
@@ -24,9 +30,31 @@ export const searchController = async () => {
     }
 }
 
+export const recipeController = (id) => {
+    const meal = selectMealById(state,id)    
+    state.recipe = new Recipe(meal)
+    state.recipe.prepWork()
+    recipeView.clearRecipe()
+    recipeView.populateDom(state.recipe)
+    console.log(state)    
+}
+
+//EVENT LISTENERS
 if(searchView.searchButton) {
     searchView.searchButton.addEventListener('click', e => {
         e.preventDefault();
         searchController();
     });
 }
+
+searchView.recipeList.addEventListener('click', e => {
+    let id
+    //if the element clicked doesn't have an id (a), get it from the parent (li)
+     if (e.target && e.target.id) {
+       id = e.target.id
+     } else {
+        const parentEl= e.composedPath().find(item => item.id ? item.id:null)
+        id = parentEl.id
+     }
+    recipeController(id)    
+})
