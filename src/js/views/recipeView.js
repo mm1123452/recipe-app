@@ -1,12 +1,10 @@
 const recipeDetailSection = document.querySelector('.recipe__detail');
-const recipeIngredientsSection = document.querySelector('recipe__ingredients');
-
 
 export const clearRecipe = () => {
     recipeDetailSection.innerHTML = '';
   };
   
-  const populateHeaderDom = (imageSrc,title) => {
+  export const populateHeaderDom = (imageSrc,title) => {
     if(imageSrc) {
       let header = `
         <div class="recipe__header">
@@ -17,8 +15,24 @@ export const clearRecipe = () => {
       recipeDetailSection.insertAdjacentHTML('afterbegin',header)
     }   
   }
+
+  //export const populateHeaderDom = (imageSrc,title, recipeSection) => {
+  //   export const populateHeaderDom = (imageSrc,title) => {
+  //   if(imageSrc) {
+  //     let header = `
+  //       <div class="recipe__header">
+  //         <img class="recipe__image" src=${imageSrc} alt=${title}>
+  //         <h1 class="recipe__title">${title}</h1>
+  //       </div>`
+        
+  //     //recipeSection.insertAdjacentHTML('afterbegin',header)
+  //   } else {
+  //     console.log('hello')
+  //   }
+    
+  // }
    
-  const populateColumnsDom = () => {
+  export const populateColumnsDom = () => {
     let columns = `   
       <div class="columns">
         <div class="recipe__prep">
@@ -33,11 +47,10 @@ export const clearRecipe = () => {
          <h2 class="heading">Procedure</h2>
         </div>
       </div>` 
-
-    recipeDetailSection.insertAdjacentHTML('beforeend',columns)             
+   recipeDetailSection.insertAdjacentHTML('beforeend',columns)             
   }
     
-  const populateIngredientsDom = (ingredients) => {
+  export const populateIngredientsDom = (ingredients) => {
     const recipeIngredient= document.querySelector('.recipe__ingredients')
 
     let ingredientList=''
@@ -50,7 +63,7 @@ export const clearRecipe = () => {
     }   
   }
 
-  const populateInstructionsDom = (instructions) => {
+  export const populateInstructionsDom = (instructions) => {
     const recipeProcedure = document.querySelector('.recipe__procedure')
 
     let instructionList=''
@@ -73,6 +86,7 @@ export const clearRecipe = () => {
   }
 
   export const populateDom = ({title,instructionArray,image,ingredients}) => {
+    //populateHeaderDom()
     populateHeaderDom(image, title)
     populateColumnsDom()
     populateIngredientsDom(ingredients)

@@ -4,8 +4,11 @@ import * as recipeView from './views/recipeView';
 import Recipe from './models/recipe';
 export const state = {}
 
-const selectMealById = (state,id) => {
-    return state.search.result.meals.find(item => item.idMeal === id)
+export const selectMealById = (state,id) => {
+    if (state) {
+        return state.search.result.meals.find(item => item.idMeal === id)
+    }
+    
 }
 
 export const searchController = async () => {
@@ -31,7 +34,9 @@ export const searchController = async () => {
 }
 
 export const recipeController = (id) => {
-    const meal = selectMealById(state,id)    
+    const meal = selectMealById(state,id) 
+    console.log('meal inside controller')   
+    console.log(meal)   
     state.recipe = new Recipe(meal)
     state.recipe.prepWork()
     recipeView.clearRecipe()
@@ -47,14 +52,19 @@ if(searchView.searchButton) {
     });
 }
 
-searchView.recipeList.addEventListener('click', e => {
-    let id
-    //if the element clicked doesn't have an id (a), get it from the parent (li)
-     if (e.target && e.target.id) {
-       id = e.target.id
-     } else {
-        const parentEl= e.composedPath().find(item => item.id ? item.id:null)
-        id = parentEl.id
-     }
-    recipeController(id)    
-})
+if (searchView.recipeList) {
+    searchView.recipeList.addEventListener('click', e => {
+        let id
+        //if the element clicked doesn't have an id (a), get it from the parent (li)
+         if (e.target && e.target.id) {
+           id = e.target.id
+         } else {
+            const parentEl= e.composedPath().find(item => item.id ? item.id:null)
+            id = parentEl.id
+         }
+        recipeController(id)    
+    })
+}
+
+
+

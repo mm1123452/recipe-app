@@ -1,6 +1,6 @@
 * {
     margin:0;
-    padding:0;
+    padding:0; 
 }
 
 html {
@@ -9,7 +9,7 @@ html {
 
 .container {
     max-width: 88rem;
-    margin: 3rem auto 0 auto;
+    margin: 0 auto;
     color:white;
     box-shadow: 0 .4rem .8rem 0 rgba(0, 0, 0, 0.2), 0 .6rem 2rem 0 rgba(0, 0, 0, 0.19);
 }
@@ -27,24 +27,33 @@ html {
     width:50%;
     display:flex;
     justify-content:center;
+    align-items:flex-end;
+    flex-wrap:wrap;
 }
 
 .search__input {
     outline-offset:0;
     outline:none;
-    padding: 1rem 5rem;
+    padding: 1rem 3rem;
+    margin:3rem 0;
+    border:none;
 }
 
 .button {
     margin-left:1rem;
-    padding: .5rem 2.5rem;
+    padding: .75rem 1.5rem;
     background-color: #FAF7F8;
     font-size:1.6rem;
     color:#4E4E4E;
+    border-radius:5px;
 }
 
 .button:focus {
     border:1px solid grey;
+}
+
+.search__button {
+    margin-bottom:3rem;
 }
 
 .recipe {
@@ -53,7 +62,7 @@ html {
 }
 
 .recipe__list {
-    width:20%;
+    width:24%;
     background-color:#C2D5D9;
     color:black;
     list-style:none;
@@ -61,8 +70,8 @@ html {
 
 .recipe__link {
     font-size:1.6rem;
-    padding:0 .5rem;
- 
+    text-align:center;
+    margin:1rem;
 }
 
 .recipe__list-item {
@@ -79,6 +88,16 @@ html {
     background-color: #FAF7F8;
     color:#4E4E4E;
     padding-top:1.25rem;
+   
+}
+
+@keyframes append {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .recipe__header {
@@ -86,9 +105,10 @@ html {
     margin: 2rem auto;
     display:flex;
     flex-wrap:wrap;
-    justify-content:center;
+    justify-content: space-evenly;
     align-items:center;
     border: 2px solid #4E4E4E;
+    animation: append .4s ease;
 }
 
 .recipe__image{
@@ -96,8 +116,6 @@ html {
   max-width:16rem;
   height:auto;
 
-  /*height:16rem;
-  width:16rem;*/
   border-radius:50%;
   margin:1.5rem 0 1rem 0;
   object-fit: cover;
@@ -106,14 +124,16 @@ html {
 .recipe__title {
  display:inline-block;
  font-size: 5rem;
- margin-left:2rem;
+ margin:0 2rem;
  color:#4E4E4E;
+ width:50%;
 }
 
 .columns {
     display:flex;
     flex-wrap:wrap;
     justify-content:space-around;
+    animation: append .4s ease;
 }
 
 .heading {
@@ -188,9 +208,19 @@ html {
 
 
 
+@media screen and (max-width: 600px) {
+    .recipe__title{
+        width:100%;
+    }
+    
+}
+
 
 
 @media screen and (max-width: 1130px) {
+.recipe__title{
+    width:100%;
+}
 
     .recipe__prep{
         width: 90%;       
@@ -199,6 +229,5 @@ html {
         margin-top: 1rem;
 
         flex: 0 1 87%;
-    }
-   
-  }
+    }   
+}
