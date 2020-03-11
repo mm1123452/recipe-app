@@ -1,17 +1,19 @@
 import {getData} from '../api/theMealDb.js'
 
 export default class Search {
-  constructor(input) {
-    this.input = input;
-  }
+  constructor() {
+    this.recipes = {};
+   }
 
-  async getRecipeList() {
+  async getRecipeList(input) {
     try {
-      this.result = await getData(this.input)
-      console.log(this.result);
-  } catch (error) {
+      const results = await getData(input)
+      this.recipes = {...this.recipes,...results}
+    } catch (error) {
       throw(error);
     }
   }
 }
+
+
 

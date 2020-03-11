@@ -1,2 +1,5 @@
 node_modules
 .DS_Store
+dist
+dist/.DS_Store
+src/js/.DS_Store

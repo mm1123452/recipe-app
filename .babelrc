@@ -1,24 +1,6 @@
 {
-     "presets": ["@babel/preset-env"],
-    // "presets": [
-    //   [
-    //     "@babel/preset-env", {
-    //       "modules": false ,
-    //     "useBuiltIns": "usage",
-    //     "corejs": 3, // or 2,
-    //     "targets": {
-    //       "browsers": [
-    //         "last 5 versions",
-    //         "ie >= 8"
-    //     ]   
-    //     }
-      
-    //   }]
-    // ],
-  
-    "plugins": [
-      "@babel/plugin-transform-runtime"
-      //"add-module-exports"
-    ]
-
-  }
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
+}
