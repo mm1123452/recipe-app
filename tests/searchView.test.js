@@ -5,6 +5,7 @@ describe('searchview', ()=>{
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.resetAllMocks();
   
     document.body.innerHTML += `
       <form class="search">
@@ -72,5 +73,50 @@ describe('searchview', ()=>{
    expect(spy).toHaveBeenCalledWith('click', mockHandler)
   })
 
+  it('calls renderRecipeToDOM one time for each recipe when renderRecipeList is called', () => {
+    let renderRecipeSpy = jest.spyOn(view, 'renderRecipeToDOM')
+    let recipes = [{}, {}, {}]
+    let expectedLength = recipes.length
+
+    view.renderRecipeList(recipes)
+    
+    expect(renderRecipeSpy).toHaveBeenCalledTimes(expectedLength)
+  })
+
+  it('does not call renderRecipeToDOM if no recipe is passed renderRecipeList is called', () => {
+    let renderRecipeSpy = jest.spyOn(view, 'renderRecipeToDOM')
+
+    view.renderRecipeList()
+    
+    expect(renderRecipeSpy).toHaveBeenCalledTimes(0)
+  })
+
+  it('renders list item when renderRecipeToDOM is called', () => {
+    view.clearRecipeList()
+    let recipeChildren = view.getElement('.recipe__list').children
+    expect(recipeChildren.length).toBe(0)
+
+    let recipe = {idMeal:1, strMeal:'Chicken Parm'}
+    view.renderRecipeToDOM(recipe)
+    
+    expect(recipeChildren.length).toBe(1)
+  })
+
+  it('renders notification when renderNotification is called', () => {
+    view.clearNotification()
+    let recipeDetail = view.getElement('.recipe__detail').children
+    expect(recipeDetail.length).toBe(0)
+    view.renderNotification('info')
+    expect(recipeDetail.length).toBe(1)
+  })
+
+  it('renders the correct message when renderNotification is called', () => {
+    view.clearNotification()
+    let recipeDetail = view.getElement('.recipe__detail').children
+
+    view.renderNotification('info')
+
+    expect(recipeDetail[0].textContent).toContain(`Sorry, couldn't find a recipe with that ingredient. Try again`)
+  })
 })
 
